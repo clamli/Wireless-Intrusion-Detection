@@ -4,7 +4,7 @@
 - MATRIX Labs MATRIX Creator
 - Raspberry Pi 3 Model B
 
-## Pre-Installation
+## \# Pre-Installation
 
 
 - [balenaEtcher](https://www.balena.io/etcher/): Flash OS images to SD cards.
