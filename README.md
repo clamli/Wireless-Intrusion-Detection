@@ -17,8 +17,12 @@
   > sudo apt install matrixio-kernel-modules
   > sudo reboot
   ```
+## \# Acoustic Data
+
 ## \# References
+
  - [Direction of Arrival for MATRIX Voice/Creator Using ODAS](https://www.hackster.io/matrix-labs/direction-of-arrival-for-matrix-voice-creator-using-odas-b7a15b)
-- [Realtime Audio Visualization In Python](https://www.swharden.com/wp/2016-07-19-realtime-audio-visualization-in-python/)
 - [Use Pyaudio Package to Record Acoustic Data](https://github.com/matrix-io/matrixio-kernel-modules/blob/master/misc/pyaudio_test.py)
 - [Microphone Array on MATRIX Creator](https://matrix-io.github.io/matrix-documentation/matrix-creator/resources/microphone/#usage)
+- [Plot Microphone Signal(s) in Real-Time](https://python-sounddevice.readthedocs.io/en/0.3.12/examples.html#plot-microphone-signal-s-in-real-time)
+- [FRI-based DOA Estimation for Arbitrary Array Layout](https://github.com/LCAV/FRIDA)
