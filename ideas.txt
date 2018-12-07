@@ -1,0 +1,4 @@
+change blocksize
+change to rawinputstream
+save to an array, send after closing the stream. 
+Then open the stream again

@@ -21,26 +21,14 @@ import numpy as np
 import sounddevice as sd
 import requests
 from threading import Thread
+from pymongo import MongoClient
+from random import randint
+from datetime import datetime
 
-class MyThread(Thread):
-    def __init__(self, url, data):
-        ''' Constructor. '''
- 
-        Thread.__init__(self)
-        self.url = url
-        self.data = data
- 
-    def run(self):
-        response = requests.post(self.url, json=self.data)
-        if response.ok:
-            # print(response.json()) #--> {'temp_1': 100, 'temp_2': 150}
-            print(self.getName())
+#Step 1: Connect to MongoDB - Note: Change connection string as needed
+client = MongoClient('mongodb://192.168.1.144:27017/')
+db=client.test_db
 cnt = 0
-cur_size = 0
-batch = 33262
-source_signal = np.zeros((8, batch))
-
-
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -81,30 +69,39 @@ q = queue.Queue()
 
 
 def audio_callback(indata, frames, time, status):
-    global cnt
-    #print('hellocb')
+    global cnt, raw_list
+    print('hellocb')
     """This is called (from a separate thread) for each audio block."""
     if status:
         print(status, file=sys.stderr)
     # Fancy indexing with mapping creates a (necessary!) copy:
     #sd.sleep(100)
-    raw_list = indata[::args.downsample, mapping].tolist()
-    print(indata.shape)
+    raw_list = indata[::args.downsample,mapping].tolist()
     print(len(raw_list))
-    data_from_pi = {'data' : raw_list}
+    
     #data_from_pi = {'data' : 'hello'}
     '''thread = MyThread('http://192.168.1.144:5000/pi', data_from_pi)
     thread.setName(cnt)
     thread.start()
-    thread.join()
-    cnt += 1'''
-    
-    response = requests.post('http://192.168.1.144:5000/pi', json=data_from_pi)
-    if response.ok:
-        pass
+    thread.join()'''
+    cnt += 1
+    time = datetime.now()
+    data_from_pi = {'data' : raw_list, 'wave_id' : cnt, 'time' : time}
+    #Step 3: Insert business object directly into MongoDB via isnert_one
+    result=db.users.insert_one(data_from_pi)
+    print(result)
+    print(cnt)
+    #Step 4: Print to the console the ObjectID of the new document
+    #response = requests.post('http://192.168.1.144:5000/pi', json=data_from_pi)
+    #if response.ok:
+    #    pass
+        
+        # sd.sleep(int(1 * 1000))
         # print(response.json()) #--> {'temp_1': 100, 'temp_2': 150}
         #print('1')
     #q.put(indata[::args.downsample, mapping])
+    
+    print('end of cb')
 
 def test(source_signal):
     ######
@@ -199,13 +196,14 @@ try:
     fig.tight_layout(pad=0)
     print(args.device)
     print(args.samplerate)
+    
     stream = sd.InputStream(
-        device=args.device, channels=max(args.channels),
+        device=args.device, blocksize=1024, channels=max(args.channels),
         samplerate=args.samplerate, callback=audio_callback)
     #ani = FuncAnimation(fig, update_plot, interval=args.interval, blit=True)
     #threading.Thread(target=update_plot).start()
     with stream:
-        sd.sleep(int(10 * 1000))
+        sd.sleep(int(5 * 1000))
 
     #with sd.Stream(device=args.device, channels=max(args.channels),
      #   samplerate=args.samplerate, callback=callback):
