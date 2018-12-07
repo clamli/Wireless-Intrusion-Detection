@@ -82,14 +82,17 @@ q = queue.Queue()
 
 def audio_callback(indata, frames, time, status):
     global cnt
-    #print(indata[::args.downsample, mapping].tolist())
+    #print('hellocb')
     """This is called (from a separate thread) for each audio block."""
     if status:
         print(status, file=sys.stderr)
     # Fancy indexing with mapping creates a (necessary!) copy:
     #sd.sleep(100)
-    #data_from_pi = {'data' : indata[::args.downsample, mapping].tolist()}
-    data_from_pi = {'data' : 'hello'}
+    raw_list = indata[::args.downsample, mapping].tolist()
+    print(indata.shape)
+    print(len(raw_list))
+    data_from_pi = {'data' : raw_list}
+    #data_from_pi = {'data' : 'hello'}
     '''thread = MyThread('http://192.168.1.144:5000/pi', data_from_pi)
     thread.setName(cnt)
     thread.start()
@@ -98,43 +101,10 @@ def audio_callback(indata, frames, time, status):
     
     response = requests.post('http://192.168.1.144:5000/pi', json=data_from_pi)
     if response.ok:
+        pass
         # print(response.json()) #--> {'temp_1': 100, 'temp_2': 150}
-        print('1')
+        #print('1')
     #q.put(indata[::args.downsample, mapping])
-
-
-def update_plot():
-    print("helloup")
-    global cur_size
-    """This is called by matplotlib for each plot update.
-
-    Typically, audio callbacks happen more frequently than plot updates,
-    therefore the queue tends to contain multiple blocks of audio data.
-
-    """
-    while True:
-        sd.sleep(500)
-        try:
-            data = q.get_nowait()
-        except queue.Empty:
-            continue
-        #print("hello_up")
-        shift = len(data)
-        print(data.shape)
-
-        r_b = cur_size + data.shape[0]
-        print(r_b)
-        if r_b > batch:
-            source_signal[:, cur_size:batch] = data.T[:, :batch - cur_size]
-            # print(source_signal)
-            test(source_signal)
-            cur_size = 0
-        else:
-            source_signal[:, cur_size:r_b] = data.T
-            cur_size = r_b
-
-def empty_callback(indata, frames, time, status):
-    pass
 
 def test(source_signal):
     ######
