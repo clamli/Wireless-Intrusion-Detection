@@ -19,6 +19,15 @@
   ```
 ## \# Acoustic Data
 
+## \# Commands
+
+```
+// Raspberry end
+cmake --build . && ./bin/Mic       // run in /cpp/build, data record and transmission
+// Python end
+python display.py                  // data analysis and display
+```
+
 ## \# References
 
  - [Direction of Arrival for MATRIX Voice/Creator Using ODAS](https://www.hackster.io/matrix-labs/direction-of-arrival-for-matrix-voice-creator-using-odas-b7a15b)
