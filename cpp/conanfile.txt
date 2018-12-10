@@ -1,0 +1,5 @@
+[requires]
+mongo-c-driver/1.11.0@bincrafters/stable
+
+[generators]
+cmake

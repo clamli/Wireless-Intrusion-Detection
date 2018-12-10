@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/portaudio.h
+
+/home/pi/Wireless-Intrusion-Detection/cpp/mic.cpp
+portaudio.h
+/home/pi/Wireless-Intrusion-Detection/cpp/portaudio.h
+stdio.h
+-
+

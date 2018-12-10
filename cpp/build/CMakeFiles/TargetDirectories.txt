@@ -1,0 +1,3 @@
+/home/pi/Wireless-Intrusion-Detection/cpp/build/CMakeFiles/rebuild_cache.dir
+/home/pi/Wireless-Intrusion-Detection/cpp/build/CMakeFiles/edit_cache.dir
+/home/pi/Wireless-Intrusion-Detection/cpp/build/CMakeFiles/Mic.dir

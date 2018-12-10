@@ -1,0 +1,61 @@
+[settings]
+    arch=armv7
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=6.3
+    os=Linux
+
+[requires]
+    mongo-c-driver/1.Y.Z
+
+[options]
+
+
+[full_settings]
+    arch=armv7
+    arch_build=armv7
+    build_type=Release
+    compiler=gcc
+    compiler.libcxx=libstdc++11
+    compiler.version=6.3
+    os=Linux
+    os_build=Linux
+
+[full_requires]
+    OpenSSL/1.0.2o@conan/stable:f2bda0fd5e0d2bfe7e6649bb09527e3a66f66d44
+    mongo-c-driver/1.11.0@bincrafters/stable:8822e36eec1ac680404618ed2ff9aec64729b54d
+    zlib/1.2.11@conan/stable:6bf72f23e461e04cc65c49c460c7629bb2dad3e1
+
+[full_options]
+    OpenSSL:386=False
+    OpenSSL:no_asm=False
+    OpenSSL:no_bf=False
+    OpenSSL:no_cast=False
+    OpenSSL:no_des=False
+    OpenSSL:no_dh=False
+    OpenSSL:no_dsa=False
+    OpenSSL:no_hmac=False
+    OpenSSL:no_md2=False
+    OpenSSL:no_md5=False
+    OpenSSL:no_mdc2=False
+    OpenSSL:no_rc2=False
+    OpenSSL:no_rc4=False
+    OpenSSL:no_rc5=False
+    OpenSSL:no_rsa=False
+    OpenSSL:no_sha=False
+    OpenSSL:no_sse2=False
+    OpenSSL:no_threads=False
+    OpenSSL:no_zlib=False
+    OpenSSL:shared=False
+    mongo-c-driver:fPIC=True
+    mongo-c-driver:shared=False
+    zlib:fPIC=True
+    zlib:minizip=False
+    zlib:shared=False
+
+[recipe_hash]
+
+
+[env]
+
