@@ -33,7 +33,7 @@
   cmake --build . && ./bin/Mic       // run in /cpp/build, data record and transmission
   ```
 
-- Python end
+- PC end
 
   ```
   python display.py                  // data analysis and display
