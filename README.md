@@ -1,7 +1,13 @@
-## \# Device
+## \# Wireless Intrusion Detection
+
+[Presentation](https://drive.google.com/open?id=1hKKZ6D4MEjD4X8Rq7K0lVZ0X7AJSj_fk)   [Report](https://drive.google.com/open?id=1yoKY1VRToHlowS8Q9HHzT8jNtaOv4Fo4)    [Video](https://drive.google.com/open?id=1Ojg1BVjl9dJArBXsy6_SuLDwXcMqTXlM)
+
+### \# Device
+
  - MATRIX Labs MATRIX Creator
 - Raspberry Pi 3 Model B
-## \# Pre-Installation
+### \# Pre-Installation
+
  - [balenaEtcher](https://www.balena.io/etcher/): Flash OS images to SD cards.
 
 - [RASPBIAN STRETCH WITH DESKTOP](https://www.raspberrypi.org/downloads/raspbian/): Image with desktop based on Debian Stretch.
@@ -17,16 +23,19 @@
   > sudo apt install matrixio-kernel-modules
   > sudo reboot
   ```
-## \# Acoustic Data
+### \# Commands
 
-## \# Commands
+- Raspberry end
 
-```
-// Raspberry end
-cmake --build . && ./bin/Mic       // run in /cpp/build, data record and transmission
-// Python end
-python display.py                  // data analysis and display
-```
+  ```
+  cmake --build . && ./bin/Mic       // run in /cpp/build, data record and transmission
+  ```
+
+- Python end
+
+  ```
+  python display.py                  // data analysis and display
+  ```
 
 ## \# References
 
